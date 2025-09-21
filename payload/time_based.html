@@ -26,7 +26,7 @@ function search(query) {
     iframe.onload = function(){
       let endtime = performance.now();
       let duration = endtime - starttime;
-      if (duration > 5000) {
+      if (duration > 10000) {
         resolve(true);
       } else {
         resolve(false);
