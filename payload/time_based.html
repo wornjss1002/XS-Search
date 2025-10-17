@@ -22,7 +22,7 @@ function search(query) {
   return new Promise((resolve, reject) => {
     let iframe = document.querySelector("iframe");
     let starttime = performance.now();
-    iframe.src = `http://127.0.0.1:5000/search?query=${query}`;
+    iframe.src = `http://127.0.0.1:12002/search?query=${query}`;
     iframe.onload = function(){
       let endtime = performance.now();
       let duration = endtime - starttime;
